@@ -108,7 +108,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ### Grayson Talbot
 - Contributed most of the codebase.
-- GitHub: [codebuild101yt](https://github.com/codebuild101yt)
+- GitHub: [Grayson Talbot](https://github.com/codebuild101yt)
 
 ### GPT-4
 - Developed the networking script.
