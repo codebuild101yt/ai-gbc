@@ -12,11 +12,12 @@ def start_client():
 
     try:
         while True:
-            data = client_socket.recv(1024).decode('utf-8')
+            '''data = client_socket.recv(1024).decode('utf-8')
             if data:
-                print("Received from EV3:", data)
+                print("Received from EV3:", data)'''
             
-            variable_to_send_back = int(data) + 1
+            #variable_to_send_back = int(data) + 1
+            variable_to_send_back = 2
             client_socket.sendall(str(variable_to_send_back).encode())
 
             time.sleep(1)

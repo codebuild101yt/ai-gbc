@@ -6,14 +6,15 @@ import time
 import ev3_comm
 from ev3_comm import EV3Server
 
-#Initialize server.
+# Initialize server.
 server = EV3Server()
 
-# Manuel mode switch.
-manuel = True
+# Manual mode switch.
+manual = False
 
 # Initialize the EV3 Brick.
 ev3 = EV3Brick()
+outputdata = 0
 
 # Initialize Ultrasonic Sensors.
 us2 = UltrasonicSensor(Port.S1)
@@ -22,14 +23,13 @@ us = UltrasonicSensor(Port.S2)
 # Initialize Motors.
 motor = Motor(Port.A)
 
-while manuel == True:
+if manual:
     while True:
         while us.distance() > 60:
             print("Top Distance:", us.distance())
             print("Bottom Distance:", us2.distance())
             print("Moving Up...")
             motor.run(-120)
-            
         else:
             print("Platform detected. Stopping...")
             # Play a sound.
@@ -51,35 +51,52 @@ while manuel == True:
                 motor.hold()
                 time.sleep(5)
 else:
+    if __name__ == "__main__":
+        server.wait_for_connection()  # Blocks until a client connects
+        
+        # Execution continues after a client connects
+        print("Connected to client, ready to receive and send data.")
+        
+        while True:
+            data = server.receive_message()
+            print("Data received:", data)
+            # Further processing of received data
 
-    server.wait_for_connection()
-    while True:
-        data = server.receive_message()
-        if data == None:
-            data == 0
-        while us.distance() > 60:
-            print("Top Distance:", us.distance())
-            print("Bottom Distance:", us2.distance())
-            print("Moving Up...")
-            motor.run(-120)
+            if data is None:
+                print("no received data")
+                time.sleep(1)
+                print("auto fixing")
+                time.sleep(1.5)
+                data = "0"
             
-        else:
-            print("Platform detected. Stopping...")
-            # Play a sound.
-            ev3.speaker.beep()
-            time.sleep(0.5)
-            motor.hold()
-            time.sleep(5)
-            while us2.distance() > 60:
+            data = int(data)
+            
+            outputdata = 15-data
+            
+            while us.distance() > 60:
                 print("Top Distance:", us.distance())
                 print("Bottom Distance:", us2.distance())
                 print("Moving Up...")
-                motor.run(120)
+                motor.run(-120)
             else:
+                print("Platform detected. Stopping...")
                 # Play a sound.
                 ev3.speaker.beep()
-                time.sleep(0.1)
-                ev3.speaker.beep()
-                time.sleep(0.1)
+                time.sleep(0.5)
                 motor.hold()
-                time.sleep(15-data)
+                time.sleep(5)
+                while us2.distance() > 60:
+                    print("Top Distance:", us.distance())
+                    print("Bottom Distance:", us2.distance())
+                    print("Moving Up...")
+                    motor.run(120)
+                else:
+                    # Play a sound.
+                    ev3.speaker.beep()
+                    time.sleep(0.1)
+                    ev3.speaker.beep()
+                    time.sleep(0.1)
+                    motor.hold()
+                    time.sleep(outputdata)
+                    outputdata = 0
+            
