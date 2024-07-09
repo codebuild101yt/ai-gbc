@@ -106,10 +106,24 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Acknowledgments
 
-- Grayson Talbot for most of the codebase.
-- GPT-4o for the networking script.
-- Visual Studio Code (VSCode), Socket, Python, and GitHub for their libraries and hosting.
-- Creative Mindstorms for email help.
-- [LEGO Mindstorms EV3](https://www.lego.com/mindstorms)
-- [Pybricks MicroPython](https://pybricks.com/ev3-micropython)
+### Grayson Talbot
+- Contributed most of the codebase.
+- GitHub: [codebuild101yt](https://github.com/codebuild101yt)
+
+### GPT-4
+- Developed the networking script.
+- Organization: [OpenAI](https://www.openai.com/)
+
+### Creative Mindstorms
+- Provided email support.
+- GitHub: [CreativeMindstorms](https://github.com/CreativeMindstorms)
+
+### Tools and Resources
+- [Visual Studio Code (VSCode)](https://code.visualstudio.com/): For the development environment.
+- [Socket Library](https://docs.python.org/3/library/socket.html): For networking communication.
+- [Python](https://www.python.org/): The programming language used for scripting.
+- [GitHub](https://github.com/): For code hosting and version control.
+- [LEGO Mindstorms EV3](https://www.lego.com/mindstorms): For the robotics kit.
+- [Pybricks MicroPython](https://pybricks.com/ev3-micropython): For the firmware used on the EV3 brick.
+
 
