@@ -112,7 +112,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ### GPT-4
 - Developed the networking script.
-- Organization: [OpenAI](https://www.openai.com/)
+- GPT-4: [OpenAI](https://www.openai.com/)
 
 ### Creative Mindstorms
 - Provided email support.

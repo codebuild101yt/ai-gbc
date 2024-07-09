@@ -1,5 +1,4 @@
 #!/usr/bin/env pybricks-micropython
-#!/usr/bin/env pybricks-micropython
 import socket
 import utime
 

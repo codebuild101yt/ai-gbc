@@ -83,4 +83,3 @@ else:
                 time.sleep(0.1)
                 motor.hold()
                 time.sleep(15-data)
-print("hello")
