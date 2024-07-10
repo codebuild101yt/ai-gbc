@@ -33,7 +33,7 @@ if manual:
             #print("Top Distance:", us.distance())
             #print("Bottom Distance:", us2.distance())
             #print("Moving Up...")
-            motor.run(-120)
+            motor.run(-220)
         else:
             #print("Platform detected. Stopping...")
             # Play a sound.
@@ -81,7 +81,7 @@ else:
                 #print("Top Distance:", us.distance())
                 #print("Bottom Distance:", us2.distance())
                 #print("Moving Up...")
-                motor.run(-120)
+                motor.run(-220)
             else:
                 #print("Platform detected. Stopping...")
                 # Play a sound.
