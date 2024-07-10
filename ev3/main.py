@@ -3,7 +3,6 @@ from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, UltrasonicSensor
 from pybricks.parameters import Port
 import time
-import ev3_comm
 from ev3_comm import EV3Server
 
 # Initialize server.
@@ -23,33 +22,38 @@ us = UltrasonicSensor(Port.S2)
 # Initialize Motors.
 motor = Motor(Port.A)
 
+def non_blocking_sleep(seconds):
+    start_time = time.time()
+    while time.time() - start_time < seconds:
+        pass
+
 if manual:
     while True:
         while us.distance() > 60:
-            print("Top Distance:", us.distance())
-            print("Bottom Distance:", us2.distance())
-            print("Moving Up...")
+            #print("Top Distance:", us.distance())
+            #print("Bottom Distance:", us2.distance())
+            #print("Moving Up...")
             motor.run(-120)
         else:
-            print("Platform detected. Stopping...")
+            #print("Platform detected. Stopping...")
             # Play a sound.
             ev3.speaker.beep()
-            time.sleep(0.5)
+            non_blocking_sleep(0.5)
             motor.hold()
-            time.sleep(5)
+            non_blocking_sleep(5)
             while us2.distance() > 60:
-                print("Top Distance:", us.distance())
-                print("Bottom Distance:", us2.distance())
-                print("Moving Up...")
+                #print("Top Distance:", us.distance())
+                #print("Bottom Distance:", us2.distance())
+                #print("Moving Up...")
                 motor.run(120)
             else:
                 # Play a sound.
                 ev3.speaker.beep()
-                time.sleep(0.1)
+                non_blocking_sleep(0.1)
                 ev3.speaker.beep()
-                time.sleep(0.1)
+                non_blocking_sleep(0.1)
                 motor.hold()
-                time.sleep(5)
+                non_blocking_sleep(5)
 else:
     if __name__ == "__main__":
         server.wait_for_connection()  # Blocks until a client connects
@@ -64,39 +68,37 @@ else:
 
             if data is None:
                 print("no received data")
-                time.sleep(1)
+                non_blocking_sleep(1)
                 print("auto fixing")
-                time.sleep(1.5)
+                non_blocking_sleep(1.5)
                 data = "0"
             
             data = int(data)
-            
-            outputdata = 15-data
+            print("Recived data is: ", data)
+            outputdata = 15 - data
             
             while us.distance() > 60:
-                print("Top Distance:", us.distance())
-                print("Bottom Distance:", us2.distance())
-                print("Moving Up...")
+                #print("Top Distance:", us.distance())
+                #print("Bottom Distance:", us2.distance())
+                #print("Moving Up...")
                 motor.run(-120)
             else:
-                print("Platform detected. Stopping...")
+                #print("Platform detected. Stopping...")
                 # Play a sound.
                 ev3.speaker.beep()
-                time.sleep(0.5)
+                non_blocking_sleep(0.5)
                 motor.hold()
-                time.sleep(5)
+                non_blocking_sleep(5)
                 while us2.distance() > 60:
-                    print("Top Distance:", us.distance())
-                    print("Bottom Distance:", us2.distance())
-                    print("Moving Up...")
+                    #print("Top Distance:", us.distance())
+                    #print("Bottom Distance:", us2.distance())
+                    #print("Moving Up...")
                     motor.run(120)
                 else:
                     # Play a sound.
                     ev3.speaker.beep()
-                    time.sleep(0.1)
+                    non_blocking_sleep(0.1)
                     ev3.speaker.beep()
-                    time.sleep(0.1)
+                    non_blocking_sleep(0.1)
                     motor.hold()
-                    time.sleep(outputdata)
-                    outputdata = 0
-            
+                    non_blocking_sleep(outputdata)

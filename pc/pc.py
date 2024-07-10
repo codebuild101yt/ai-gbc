@@ -9,15 +9,23 @@ def start_client():
     client_socket.connect((ev3_ip, port))
 
     print("Connected to EV3")
-
+    last_variable_to_send_back = None
     try:
         while True:
             '''data = client_socket.recv(1024).decode('utf-8')
             if data:
-                print("Received from EV3:", data)'''
+                print("Received from EV3:", data)
+            '''
+            new_value = input("Enter dev wait period (leave empty to use the last value): ")
+            if new_value:
+                last_variable_to_send_back = int(new_value)
             
-            #variable_to_send_back = int(data) + 1
-            variable_to_send_back = 2
+            if last_variable_to_send_back is not None:
+                variable_to_send_back = last_variable_to_send_back
+            else:
+                print("No previous value found. Please enter a new value.")
+                continue
+
             client_socket.sendall(str(variable_to_send_back).encode())
 
             time.sleep(1)
