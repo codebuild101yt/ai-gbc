@@ -21,6 +21,7 @@ This project involves controlling a LEGO Mindstorms EV3 robot using Python scrip
 2. Upload the `main.py` and `ev3_comm.py` scripts to your EV3 brick.
 
 3. Save the `pc.py` script to your PC.
+4. add the ai files to PC folder.
 
 ## Usage
 
@@ -125,5 +126,6 @@ This project is licensed under the MIT License. See the LICENSE file for details
 - [GitHub](https://github.com/): For code hosting and version control.
 - [LEGO Mindstorms EV3](https://www.lego.com/mindstorms): For the robotics kit.
 - [Pybricks MicroPython](https://pybricks.com/ev3-micropython): For the firmware used on the EV3 brick.
+- [Raspberry PI](https://www.raspberrypi.com/): for the ai hardware.
 
 
