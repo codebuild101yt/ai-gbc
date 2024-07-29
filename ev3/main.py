@@ -9,7 +9,7 @@ from ev3_comm import EV3Server
 server = EV3Server()
 
 # Manual mode switch.
-manual = False
+manual = True
 
 # Initialize the EV3 Brick.
 ev3 = EV3Brick()
@@ -33,7 +33,7 @@ if manual:
             #print("Top Distance:", us.distance())
             #print("Bottom Distance:", us2.distance())
             #print("Moving Up...")
-            motor.run(-220)
+            motor.run(-320)
         else:
             #print("Platform detected. Stopping...")
             # Play a sound.
@@ -81,7 +81,7 @@ else:
                 #print("Top Distance:", us.distance())
                 #print("Bottom Distance:", us2.distance())
                 #print("Moving Up...")
-                motor.run(-220)
+                motor.run(-320)
             else:
                 #print("Platform detected. Stopping...")
                 # Play a sound.
