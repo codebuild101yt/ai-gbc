@@ -1,4 +1,5 @@
 # EV3 Mindstorms Project
+**This Project is still under development and the docs are not done.**
 
 This project involves controlling a LEGO Mindstorms EV3 robot using Python scripts. The project consists of three main parts: a main control script (`main.py`), a communication script for the EV3 (`ev3_comm.py`), and a communication script for the PC.
 
