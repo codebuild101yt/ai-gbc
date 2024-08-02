@@ -1,6 +1,6 @@
 #!/usr/bin/env pybricks-micropython
 from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import Motor, UltrasonicSensor
+from pybricks.ev3devices import Motor, UltrasonicSensor, InfraredSensor
 from pybricks.parameters import Port
 import time
 from ev3_comm import EV3Server
@@ -9,14 +9,14 @@ from ev3_comm import EV3Server
 server = EV3Server()
 
 # Manual mode switch.
-manual = False
+manual = True
 
 # Initialize the EV3 Brick.
 ev3 = EV3Brick()
 outputdata = 0
 
 # Initialize Ultrasonic Sensors.
-us2 = UltrasonicSensor(Port.S1)
+us2 = InfraredSensor(Port.S1)
 us = UltrasonicSensor(Port.S2)
 
 # Initialize Motors.
@@ -29,11 +29,11 @@ def non_blocking_sleep(seconds):
 
 if manual:
     while True:
-        while us.distance() > 60:
+        while us.distance() > 70:
             #print("Top Distance:", us.distance())
             #print("Bottom Distance:", us2.distance())
             #print("Moving Up...")
-            motor.run(-220)
+            motor.run(-500)
         else:
             #print("Platform detected. Stopping...")
             # Play a sound.
@@ -41,7 +41,7 @@ if manual:
             non_blocking_sleep(0.5)
             motor.hold()
             non_blocking_sleep(5)
-            while us2.distance() > 60:
+            while us2.distance() >= 10:
                 #print("Top Distance:", us.distance())
                 #print("Bottom Distance:", us2.distance())
                 #print("Moving Up...")
@@ -77,11 +77,11 @@ else:
             print("Recived data is: ", data)
             outputdata = 15 - data
             
-            while us.distance() > 60:
+            while us.distance() > 70:
                 #print("Top Distance:", us.distance())
                 #print("Bottom Distance:", us2.distance())
                 #print("Moving Up...")
-                motor.run(-220)
+                motor.run(-320)
             else:
                 #print("Platform detected. Stopping...")
                 # Play a sound.
@@ -89,7 +89,7 @@ else:
                 non_blocking_sleep(0.5)
                 motor.hold()
                 non_blocking_sleep(5)
-                while us2.distance() > 60:
+                while us2.distance() >= 10:
                     #print("Top Distance:", us.distance())
                     #print("Bottom Distance:", us2.distance())
                     #print("Moving Up...")
